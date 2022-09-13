@@ -14,9 +14,7 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 
-import test from '../images/black manta.jpg'
-
-function Navbar() {
+function Navbar(props) {
 
 
 
@@ -25,19 +23,19 @@ function Navbar() {
         <CardMedia
         component="img"
         sx={{ width: 150 }}
-        image={test}
+        image={props.photo}
         alt="photo collaborateur"
       />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
-            David Hyde
+            {props.name}
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary">(41 ans)</Typography>
-          <Typography>Amnesty Bay, USA</Typography>
-          <Typography>David.Hyde@mail.com</Typography>
-          <Typography>001.05.03.06.89</Typography>
-          <Typography>16/08/1967</Typography>
+          <Typography variant="subtitle1" color="text.secondary">({props.age + ' ans'})</Typography>
+          <Typography>{props.location}</Typography>
+          <Typography>{props.mail}</Typography>
+          <Typography>{props.phone}</Typography>
+          <Typography>{props.date}</Typography>
         </CardContent>
       </Box>
     </Card>
