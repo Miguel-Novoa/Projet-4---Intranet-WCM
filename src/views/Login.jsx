@@ -1,8 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import {useState, useEffect} from 'react';
 import Navbar from "../components/Navbar";
 import '../css/Login.css'
 import '../css/Navbar.css'
+import {useNavigate} from 'react-router-dom'
 
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -14,7 +15,14 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
+import { login } from "../services/Login.service";
+
 function Connexion() {
+
+    const [mail, setMail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
 
     const [values, setValues] = React.useState({
         amount: '',
@@ -23,6 +31,12 @@ function Connexion() {
         weightRange: '',
         showPassword: false,
     });
+
+    useEffect(()=>{
+      if(localStorage.getItem('token') !== null){
+        navigate('/Home')
+      }
+    }, [])
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -39,16 +53,30 @@ function Connexion() {
         event.preventDefault();
       };
 
+      const handleMailValueChange = event => {
+        setMail(event.target.value)
+      };
+
+      const handlePasswordValueChange = event => {
+        setPassword(event.target.value)
+      };
+
+      const loginHandler = () =>{
+        login(mail, password)
+        console.log(mail, password)
+      }
+      
+
   return (
     <div>
         <Navbar className='nav'/>
         <div className="Connexion">
             <div className="loginForm">
-                <TextField id="outlined-basic" className="mailIpt" label="Email" variant="outlined" />
-                <FormControl sx={{ m: 1, width: '40ch' }} variant="outlined">
+                <TextField onChange={handleMailValueChange} type='email' id="outlined-basic mailIpt" className="mailIpt" label="Email" variant="outlined" />
+                <FormControl onChange={handlePasswordValueChange} sx={{ m: 1, width: '40ch' }} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                     <OutlinedInput
-                        id="outlined-adornment-password"
+                        id="outlined-adornment-password passwordIpt"
                         type={values.showPassword ? 'text' : 'password'}
                         value={values.password}
                         onChange={handleChange('password')}
@@ -67,11 +95,12 @@ function Connexion() {
                         label="Password"
                     />
                 </FormControl>
-                <Button className='loginBtn' variant="contained">Se connecter</Button>
+                <Button className='loginBtn' variant="contained" onClick={ loginHandler }>Se connecter</Button>
             </div>
         </div>
     </div>
   )
+  
 }
 
 export default Connexion;
