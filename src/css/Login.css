@@ -1,0 +1,24 @@
+.Connexion{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginForm{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background-color: var(--main-color);
+    justify-self: center;
+}
+
+.mailIpt{
+    width: 40ch;
+}
+
+.loginBtn{
+    background-color: var(--secondary-color) !important;
+    color: var(--main-color) !important;
+}

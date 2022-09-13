@@ -1,0 +1,25 @@
+.Home{
+    min-height: 100vh !important;
+}
+
+.welcome{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 5%;
+    min-height: 80vh !important;
+}
+
+.displayRandomBtn{
+    background-color: var(--secondary-color) !important;
+    color: var(--main-color) !important;
+    margin-top: 2% !important;
+    height: 40px;
+}
+
+.displayRandomBtn:hover{
+    background-color: var(--main-color) !important;
+    color: var(--secondary-color) !important;
+    border: 2px solid var(--secondary-color) !important;
+}

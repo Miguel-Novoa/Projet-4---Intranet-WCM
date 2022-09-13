@@ -1,0 +1,7 @@
+.Appbar{
+    background-color: var(--secondary-color) !important;
+}
+
+.logo{
+    width: 50px;
+}

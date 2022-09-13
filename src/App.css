@@ -1,0 +1,20 @@
+:root{
+  --main-color : #edf6f9;
+  --secondary-color : #006d77;
+}
+
+#root {
+  margin: 0;
+  text-align: center;
+  min-height: 100vh !important;
+  width: 100%;
+}
+
+.body{
+  width: 100%;
+  margin: 0;
+}
+
+.App{
+  min-height: 100vh !important;
+}
