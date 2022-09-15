@@ -7,6 +7,7 @@ import Login from './views/Login';
 import Home from './views/Home'
 import List from './views/List'
 import Profile from './views/Profile';
+import AddUser from './views/AddUser';
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
             <Route path='*' element={<Login />} />
             <Route path='/Home' element={<Home />}/>
             <Route path='/List' element={<List />}/>
-            <Route path='/Profile' element={<Profile/>}></Route>
+            <Route path='/Profile' element={<Profile/>}/>
+            <Route path='/Add' element={<AddUser />}/>
           </Routes>
         </BrowserRouter> 
       

@@ -7,7 +7,7 @@ export async function login(email, password){
         "password": password
       })
       .then(function (response) {
-        setTokenLocalStorage(response.data.token, response.data.user.id);
+        setTokenLocalStorage(response.data.token, response.data.user.id, response.data.user.isAdmin);
       })
       .catch(function (error) {
         console.log(error);

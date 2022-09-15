@@ -3,6 +3,7 @@
     width: 35%;
     justify-content: flex-start;
     column-gap: 15%;
+    height: auto;
 }
 
 .service{

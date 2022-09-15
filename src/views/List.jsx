@@ -4,7 +4,7 @@ import '../App.css';
 import '../css/Navbar.css'
 import '../css/List.css'
 import Navbar from "../components/Navbar";
-import Card from '../components/Card'
+import Cards from '../components/Card'
 import { getDatas } from "../services/GetDatas.service";
 import { useState, useEffect } from "react";
 import { displayBirthdate } from "../js/displayBirthdate";
@@ -97,12 +97,13 @@ function List() {
         <div className="peopleList">
             {
                 peopleDatas?.map((person) =>{
-                    return(<Card key={person.id} name={person.firstname + ' ' + person.lastname} 
+                    return(<Cards key={person.id} name={person.firstname + ' ' + person.lastname} 
                      photo={person.photo} mail={person.email}
                      location={person.city + ', ' + person.country}
                      phone={person.phone}  date={displayBirthdate(person.birthdate)}
                      age={calculateAge(person.birthdate)}
                      service={person.service}
+                     id={person.id}
                     />)
                 })
             }

@@ -13,6 +13,7 @@ function Navbar() {
   let [currentUserDatas, setCurrentUserDatas] = useState()
   let token = localStorage.getItem('token');
   let id = localStorage.getItem('id');
+  let admin = JSON.parse(localStorage.getItem('admin'));
 
   const deco = () =>{
     removeTokenLocalStorage();
@@ -38,6 +39,11 @@ function Navbar() {
         <Link className="navLink" to={'/List'}>
           <h3>Liste</h3>
         </Link>
+        {admin &&
+          <Link id="add" style={{display : admin ? 'block' : 'none'}} className="navLink" to={'/Add'}>
+            <h3>Ajouter un collaborateur</h3>
+          </Link>
+        }
         <Link className="navLink" to={'/Profile'}>
           <img className='userPic' src={currentUserDatas?.photo} alt="user profile picture" />
         </Link>

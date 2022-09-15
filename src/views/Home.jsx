@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import Card from "../components/Card"
+import Cards from "../components/Card"
 import Button from '@mui/material/Button';
 import '../App.css';
 import '../css/Navbar.css'
@@ -53,12 +53,13 @@ function Home() {
           <div className='welcome'>
               <h1>Bonjour {currentUserDatas.firstname} !</h1>
               <h3>Avez-vous dit bonjour à :</h3>
-              <Card  name={randomDatas.firstname + ' ' + randomDatas.lastname} 
+              <Cards  name={randomDatas.firstname + ' ' + randomDatas.lastname} 
                      photo={randomDatas.photo} mail={randomDatas.email}
                      location={randomDatas.city + ', ' + randomDatas.country}
                      phone={randomDatas.phone}  date={displayBirthdate(randomDatas.birthdate)}
                      age={calculateAge(randomDatas.birthdate)}
                      service={randomDatas.service}
+                     id={randomDatas.id}
               />
               <Button className='displayRandomBtn' onClick={displayNewRandom} variant="contained">Dire bonjour à quelqu'un d'autre</Button>
           </div>
