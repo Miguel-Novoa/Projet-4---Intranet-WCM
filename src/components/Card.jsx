@@ -26,6 +26,7 @@ function Navbar(props) {
         image={props.photo}
         alt="photo collaborateur"
       />
+      <div className="service">{props.service}</div>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">

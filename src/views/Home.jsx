@@ -58,6 +58,7 @@ function Home() {
                      location={randomDatas.city + ', ' + randomDatas.country}
                      phone={randomDatas.phone}  date={displayBirthdate(randomDatas.birthdate)}
                      age={calculateAge(randomDatas.birthdate)}
+                     service={randomDatas.service}
               />
               <Button className='displayRandomBtn' onClick={displayNewRandom} variant="contained">Dire bonjour à quelqu'un d'autre</Button>
           </div>
