@@ -23,7 +23,7 @@ function List() {
     getDatas(allPeopleUrl, token).then(res => {
       setPeopleDatas(res.data)
       setFiltred(res.data)
-      console.log(res.data)
+      console.log(res.data[1].service)
     }
       )
   }, []);
@@ -50,6 +50,32 @@ function List() {
       setPeopleDatas(filtred);
     }
   }
+
+  const serviceFilter = (str) =>{
+    switch (str){
+      case 'client' : 
+        let filtredClient = filtred.filter(people =>{
+          return people.service.toLowerCase().includes(str)
+        })
+        setPeopleDatas(filtredClient);
+        break;
+      case 'marketing' :
+        let filtredMarketing = filtred.filter(people =>{
+          return people.service.toLowerCase().includes(str)
+        })
+        setPeopleDatas(filtredMarketing);
+        break;
+      case 'technique' :
+        let filtredTechnique = filtred.filter(people =>{
+          return people.service.toLowerCase().includes(str)
+        })
+        setPeopleDatas(filtredTechnique);
+        break;
+      case '' :
+        setPeopleDatas(filtred)
+        break;
+    }
+  }
   
 
   return (
@@ -62,9 +88,10 @@ function List() {
                 <option onClick={()=>{setNameCitySelect('city')}} value="city">Ville</option>
           </select>
           <select name="service" id="service" className="select">
-                <option value="Client">Client</option>
-                <option value="Technique">Technique</option>
-                <option value="Marketing">Marketing</option>
+                <option onClick={()=>{serviceFilter('')}} value="" selected>Choisissez une option</option>
+                <option onClick={()=>{serviceFilter('client')}} value="Client">Client</option>
+                <option onClick={()=>{serviceFilter('technique')}} value="Technique">Technique</option>
+                <option onClick={()=>{serviceFilter('marketing')}} value="Marketing">Marketing</option>
           </select>
         </div>
         <div className="peopleList">
