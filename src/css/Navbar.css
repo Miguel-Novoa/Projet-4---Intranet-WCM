@@ -1,7 +1,44 @@
-.Appbar{
-    background-color: var(--secondary-color) !important;
+nav{
+    display: flex;
+    flex-flow: row;
+    background-color: var(--secondary-color);
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding-left: 1%;
+    padding-right: 1%;
+    color: var(--main-color);
 }
 
-.logo{
-    width: 50px;
+.navLogo{
+    display: flex;
+    flex-flow: row;
+    column-gap: 6%;
+}
+
+.intranetLogo{
+    width: 60px;
+    height: 60px;
+}
+
+.links{
+    display: flex;
+    flex-flow: row;
+    column-gap: 2%;
+}
+
+.links .navLink{
+    width: 80px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.navLink{
+    color: var(--main-color);
+}
+
+.userPic{
+    width: 60px;
+    border-radius: 50%;
 }

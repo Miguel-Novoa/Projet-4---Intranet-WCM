@@ -5,31 +5,38 @@ import Button from '@mui/material/Button';
 import '../App.css';
 import '../css/Navbar.css'
 import '../css/Home.css'
-import { removeTokenLocalStorage } from "../services/LocalStorage.service";
-import {useNavigate} from 'react-router-dom'
 import {useEffect} from 'react';
 import { getDatas } from "../services/GetDatas.service";
 import { calculateAge } from "../js/calculateAge";
 import { displayBirthdate } from "../js/displayBirthdate";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const navigate = useNavigate();
   let randomUrl = 'http://localhost:7000/api/collaborateurs/random ';
+  let id = localStorage.getItem('id');
   let [randomDatas, setRandomDatas] = useState();
+  let [currentUserDatas, setCurrentUserDatas] = useState()
   let token = localStorage.getItem('token');
-
-
-  const deco = () =>{
-    removeTokenLocalStorage();
-    navigate('/')
-  }
+  let navigate = useNavigate();
 
   useEffect(()=>{
+    let currentUserUrl = `http://localhost:7000/api/collaborateurs/${id}` ;
     getDatas(randomUrl, token).then(res => {
       setRandomDatas(res.data)
       console.log(res.data)
+    },
+
+    getDatas(currentUserUrl, token).then(res =>{
+      setCurrentUserDatas(res.data);
+    })
+    )
+  }, [])
+
+  useEffect(()=>{
+    if(token === null){
+      navigate('/')
     }
-      )
+      
   }, [])
 
   const displayNewRandom = () =>{
@@ -42,12 +49,12 @@ function Home() {
     <div className="Home">
         <Navbar/>
         {randomDatas &&
+        currentUserDatas &&
           <div className='welcome'>
-              <Button onClick={deco}>Deco</Button>
-              <h1>Bonjour !</h1>
+              <h1>Bonjour {currentUserDatas.firstname} !</h1>
               <h3>Avez-vous dit bonjour à :</h3>
               <Card  name={randomDatas.firstname + ' ' + randomDatas.lastname} 
-                     photo={randomDatas.photo} mail={randomDatas.mail}
+                     photo={randomDatas.photo} mail={randomDatas.email}
                      location={randomDatas.city + ', ' + randomDatas.country}
                      phone={randomDatas.phone}  date={displayBirthdate(randomDatas.birthdate)}
                      age={calculateAge(randomDatas.birthdate)}

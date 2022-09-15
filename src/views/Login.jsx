@@ -62,7 +62,9 @@ function Connexion() {
       };
 
       const loginHandler = () =>{
-        login(mail, password)
+        login(mail, password).then(response =>{
+          navigate('/Home')
+        })
         console.log(mail, password)
       }
       
