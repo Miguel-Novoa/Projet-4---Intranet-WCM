@@ -43,7 +43,11 @@ function Profile() {
           mail={currentUserDatas.email} 
           phone={currentUserDatas.phone} 
           city={currentUserDatas.city}  
-          country={currentUserDatas.country} />
+          country={currentUserDatas.country} 
+          date={currentUserDatas.birthdate}
+          gender={currentUserDatas.gender}
+          service={currentUserDatas.service}
+          photo={currentUserDatas.photo}/>
         }
     </div>
   )

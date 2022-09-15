@@ -9,16 +9,14 @@
     padding: 1%;
     border-radius: 1%;
     height: auto;
+    row-gap: 1rem;
 }
 
 .formInput{
-    width: 100%;
-}
-
-#mail{
     height: 55px;
     width: 100%;
     border-radius: 5px;
     background-color: var(--secondary-color);
-    border: 0.05px solid black
+    border: 0.05px solid var(--main-color);
+    color : var(--main-color);
 }
