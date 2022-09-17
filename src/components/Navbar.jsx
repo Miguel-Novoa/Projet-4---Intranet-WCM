@@ -5,6 +5,9 @@ import '../css/Navbar.css';
 import { removeTokenLocalStorage } from "../services/LocalStorage.service";
 import {useNavigate, Link} from 'react-router-dom';
 import { getDatas } from "../services/GetDatas.service";
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ListIcon from '@mui/icons-material/List';
 
 import Logo from '../images/logo.png'
 
@@ -35,19 +38,20 @@ function Navbar() {
         <img className="intranetLogo" src={Logo} alt="intranet logo" />
         <h2>Intranet</h2>
       </Link>
-      <div className="links">
+      <div style={{display: token !== null ? 'flex' : 'none'}} className="links">
         <Link className="navLink" to={'/List'}>
-          <h3>Liste</h3>
+          <ListIcon fontSize='large' className="navIcon"/>
         </Link>
         {admin &&
           <Link id="add" style={{display : admin ? 'block' : 'none'}} className="navLink" to={'/Add'}>
-            <h3>Ajouter un collaborateur</h3>
+            <GroupAddIcon fontSize='large' className="navIcon"/>
           </Link>
         }
         <Link className="navLink" to={`/Profile/${id}`}>
           <img className='userPic' src={currentUserDatas?.photo} alt="user profile picture" />
         </Link>
-        <h3 className="decoBtn" onClick={deco}>Se déconnecter</h3>
+        <LogoutIcon fontSize='large' className="navIcon" onClick={deco} />
+        
         <img className="userPhoto" src="" alt="" />
       </div>
     </nav>

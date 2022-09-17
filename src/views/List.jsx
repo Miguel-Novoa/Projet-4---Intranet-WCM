@@ -82,17 +82,26 @@ function List() {
     <div className="List">
         <Navbar />
         <div className="filter">
-          <input onChange={searchFilter} ref={searchValue} type="search" name="search" id="search" />
-          <select name="nameAndCity" id="nameAndCity" className="select">
-                <option onClick={()=>{setNameCitySelect('name')}} value="name">Nom</option>
-                <option onClick={()=>{setNameCitySelect('city')}} value="city">Ville</option>
-          </select>
-          <select name="service" id="service" className="select">
-                <option onClick={()=>{serviceFilter('')}} value="" selected>Choisissez une option</option>
-                <option onClick={()=>{serviceFilter('client')}} value="Client">Client</option>
-                <option onClick={()=>{serviceFilter('technique')}} value="Technique">Technique</option>
-                <option onClick={()=>{serviceFilter('marketing')}} value="Marketing">Marketing</option>
-          </select>
+        <h2>Liste des collaborateurs :</h2>
+          <input placeholder="Rerchercher..." onChange={searchFilter} ref={searchValue} type="search" name="search" id="search" />
+          <div className="selectDiv">
+            <div className="select">
+              <p>Rechercher par : </p>
+              <select name="nameAndCity" id="nameAndCity">
+                    <option onClick={()=>{setNameCitySelect('name')}} value="name">Nom</option>
+                    <option onClick={()=>{setNameCitySelect('city')}} value="city">Ville</option>
+              </select>
+            </div>
+            <div className="select">
+              <p>Catégorie :</p>
+              <select name="service" id="service">
+                    <option onClick={()=>{serviceFilter('')}} value="" selected>Choisissez une option</option>
+                    <option onClick={()=>{serviceFilter('client')}} value="Client">Client</option>
+                    <option onClick={()=>{serviceFilter('technique')}} value="Technique">Technique</option>
+                    <option onClick={()=>{serviceFilter('marketing')}} value="Marketing">Marketing</option>
+              </select>
+            </div>
+          </div>
         </div>
         <div className="peopleList">
             {

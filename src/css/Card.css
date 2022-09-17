@@ -2,11 +2,57 @@
 .Card{
     width: 35%;
     justify-content: flex-start;
-    column-gap: 15%;
     height: auto;
 }
 
+.cardContent{
+    display: flex;
+    flex-flow: column;
+}
+
 .service{
-    background-color: var(--secondary-color);
     height: 40px;
+    width: 100px;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: black;
+}
+
+.adminBtns{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    column-gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.typography{
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    column-gap: 0.3rem;
+}
+
+.name{
+    display: flex;
+    align-self: center;
+}
+
+.age{
+    display: flex;
+    align-self: center;
+}
+
+.adminBtn{
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+    border-radius: 5px;
+}
+
+.adminBtn:hover{
+    background-color: white;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
 }
