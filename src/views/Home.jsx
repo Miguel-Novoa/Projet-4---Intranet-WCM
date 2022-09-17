@@ -23,7 +23,6 @@ function Home() {
     let currentUserUrl = `http://localhost:7000/api/collaborateurs/${id}` ;
     getDatas(randomUrl, token).then(res => {
       setRandomDatas(res.data)
-      console.log(res.data)
     },
 
     getDatas(currentUserUrl, token).then(res =>{

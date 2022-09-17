@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { PutDatas } from "../services/PutDatas.service";
 import { AddDatas } from "../services/AddDatas.service";
@@ -17,17 +16,13 @@ function Form(props) {
     const { register, getValues, handleSubmit, watch, formState: { errors } } = useForm();
     let token = localStorage.getItem('token');
     let id = localStorage.getItem('id');
-    let admin = JSON.parse(localStorage.getItem('admin'));
-    let [userDatas, setUserDatas] = useState();
     let navigate = useNavigate();
 
     const currentLocation = useLocation();
-    console.log(currentLocation.pathname)
 
     const onSubmit = data => {
         let urlPut = `http://localhost:7000/api/collaborateurs/${props.userId}`;
         let urlAdd = `http://localhost:7000/api/collaborateurs/`
-        console.log(data.mail)
         if(currentLocation.pathname === `/Profile/${props.userId}`){
             PutDatas(urlPut, token, data.gender, data.firstname, data.lastname, data.email, 'password', data.phone, 
             data.birthdate, data.city, data.country, data.photo, data.service).then(res =>{

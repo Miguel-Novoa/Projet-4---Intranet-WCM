@@ -23,7 +23,6 @@ function List() {
     getDatas(allPeopleUrl, token).then(res => {
       setPeopleDatas(res.data)
       setFiltred(res.data)
-      console.log(res.data[1].service)
     }
       )
   }, []);

@@ -9,6 +9,5 @@ export async function Delete(url, token) {
 
     return await axios.delete(url, config)
     .then((response) =>{
-        console.log(response)
         return response})
 }

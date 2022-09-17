@@ -24,6 +24,5 @@ export async function PutDatas(url, token, genre, firstname, lastname, mail, pas
 
     return await axios.put(url, newUserInfos, config)
     .then((response) =>{
-        console.log(response)
         return response})
 }

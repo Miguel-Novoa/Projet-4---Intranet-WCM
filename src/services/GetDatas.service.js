@@ -8,6 +8,5 @@ export async function getDatas(url, token) {
 
     return await axios.get(url, config)
     .then((response) =>{
-        console.log(response)
         return response})
 }

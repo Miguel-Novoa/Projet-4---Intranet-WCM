@@ -65,7 +65,6 @@ function Connexion() {
         login(mail, password).then(response =>{
           navigate('/Home')
         })
-        console.log(mail, password)
       }
       
 

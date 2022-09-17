@@ -24,6 +24,5 @@ export async function AddDatas(url, token, genre, firstname, lastname, mail, pas
 
     return await axios.post(url, newUserInfos, config)
     .then((response) =>{
-        console.log(response)
         return response})
 }
