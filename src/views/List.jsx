@@ -104,6 +104,7 @@ function List() {
                      age={calculateAge(person.birthdate)}
                      service={person.service}
                      id={person.id}
+                     setUsersState = {setPeopleDatas}
                     />)
                 })
             }

@@ -11,6 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
 import { Delete } from "../services/Delete.service";
+import { getDatas } from "../services/GetDatas.service";
 
 function Cards(props) {
   let admin = JSON.parse(localStorage.getItem('admin'));
@@ -26,13 +27,17 @@ function Cards(props) {
 
   const deleteUser = (id) =>{
     let url = `http://localhost:7000/api/collaborateurs/${id}`
-    Delete(url, token);
+    Delete(url, token).then(res =>{
+      getDatas('http://localhost:7000/api/collaborateurs ', token).then(response =>{
+        props.setUsersState(response.data)
+      })
+    })
   }
 
 
   return (
     <Card className='Card' sx={{ display: 'flex' }}>
-        <CardMedia
+      <CardMedia
         component="img"
         sx={{ width: 150 }}
         image={props.photo}

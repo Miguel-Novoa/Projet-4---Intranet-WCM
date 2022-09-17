@@ -26,7 +26,7 @@ function Form(props) {
         let urlPut = `http://localhost:7000/api/collaborateurs/${id}`;
         let urlAdd = `http://localhost:7000/api/collaborateurs/`
         if(currentLocation.pathname === '/Profile'){
-            PutDatas(urlPut, token,id, data.gender, data.firstname, data.lastname, data.email, 'password', data.phone, 
+            PutDatas(urlPut, token, data.gender, data.firstname, data.lastname, data.email, 'password', data.phone, 
             data.birthdate, data.city, data.country, data.photo, data.service)
         }else if(currentLocation.pathname === '/Add'){
             AddDatas(urlAdd, token, data)
@@ -38,7 +38,7 @@ function Form(props) {
             <input placeholder="Nom" className='formInput' id="nom" defaultValue={props.lastname} {...register('lastname')} />
             <input placeholder="Prénom" className='formInput' id="prenom" defaultValue={props.firstname} {...register('firstname')} />
 
-            <select defaultValue={props.gender} {...register('gender')} name="civilite" id="civilite" className="formInput">
+            <select defaultValue={props.gender} {...register('gender')} name="gender" id="civilite" className="formInput">
                 <option value="male">Homme</option>
                 <option value="female">Femme</option>
             </select>
@@ -50,7 +50,10 @@ function Form(props) {
             </select>
 
             <input placeholder="E-mail" id="mail" className="formInput" type="email" {...register('email')} label={props.mail} defaultValue={props.mail}  size="30" required />
-
+            <input type="password" name="password" id='password' {...register('password')}/>
+            <input type="password" name="confirmPassword" id='confirmPassword' {...register('confirmPassword',{
+                validate : value => value === getValues('password')
+            })}/>
             <input placeholder="Téléphone" type='tel' className='formInput' id="phone" defaultValue={props.phone} {...register('phone')} />
             <input type="date" className='formInput' id='date' defaultValue={props.date} {...register('birthdate')} />
             <input placeholder="Ville" className='formInput' id="city" defaultValue={props.city} {...register('city')} />

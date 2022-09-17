@@ -7,7 +7,7 @@ export async function AddDatas(url, token, datas) {
         'Content-type' : 'application/json'
     }}
 
-    return await axios.put(url, datas, config)
+    return await axios.post(url, datas, config)
     .then((response) =>{
         console.log(response)
         return response})

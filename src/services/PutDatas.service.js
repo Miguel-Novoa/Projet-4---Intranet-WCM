@@ -13,7 +13,7 @@ export async function PutDatas(url, token, id, genre, firstname, lastname, mail,
         "firstname": firstname,
         "lastname": lastname,
         "email": mail,
-        "password": password, // Facultatif : Uniquement si le mot de passe doit être changé
+        "password": password, 
         "phone": phone,
         "birthdate": birthdate,
         "city": city,
