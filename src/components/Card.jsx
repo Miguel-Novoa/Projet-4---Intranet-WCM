@@ -2,6 +2,7 @@ import React from "react";
 import '../App.css';
 import '../css/Navbar.css'
 import '../css/Card.css'
+import { Link } from "react-router-dom";
 
 import Popper from '@mui/material/Popper';
 import Box from '@mui/material/Box';
@@ -54,7 +55,9 @@ function Cards(props) {
           <Typography>{props.mail}</Typography>
           <Typography>{props.phone}</Typography>
           <Typography>{props.date}</Typography>
-          <button style={{display : admin ? 'block' : 'none'}}>Editer</button>
+          <Link to={`/Profile/${props.id}`}>
+            <button style={{display : admin ? 'block' : 'none'}}>Editer</button>
+          </Link>
           <button aria-describedby={props.id} type="button" onClick={handleClick}
            style={{display : admin ? 'block' : 'none'}}>Supprimer</button>
           <Popper id={props.id} open={open} anchorEl={anchorEl}>

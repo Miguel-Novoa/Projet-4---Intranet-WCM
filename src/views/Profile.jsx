@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getDatas } from "../services/GetDatas.service";
 
 import '../App.css';
@@ -15,15 +15,17 @@ function Profile() {
   let id = localStorage.getItem('id');
   let navigate = useNavigate();
   let token = localStorage.getItem('token');
-  let [currentUserDatas, setCurrentUserDatas] = useState()
+  let [currentUserDatas, setCurrentUserDatas] = useState();
+  let params = useParams();
+  let userId = params.id
+  console.log(userId)
 
   useEffect(()=>{
-    let currentUserUrl = `http://localhost:7000/api/collaborateurs/${id}` ;
+    let currentUserUrl = `http://localhost:7000/api/collaborateurs/${userId}` ;
 
 
     getDatas(currentUserUrl, token).then(res =>{
       setCurrentUserDatas(res.data);
-      console.log(res.data)
     })
   }, [])
 
@@ -47,7 +49,8 @@ function Profile() {
           date={currentUserDatas.birthdate}
           gender={currentUserDatas.gender}
           service={currentUserDatas.service}
-          photo={currentUserDatas.photo}/>
+          photo={currentUserDatas.photo}
+          userId={currentUserDatas.id}/>
         }
     </div>
   )

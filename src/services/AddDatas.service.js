@@ -1,13 +1,28 @@
 import axios from 'axios';
 
-export async function AddDatas(url, token, datas) {
+export async function AddDatas(url, token, genre, firstname, lastname, mail, password, phone, birthdate, city,
+    country, photo, service) {
 
     let config = {headers: {
         'Authorization': `Bearer ${token}`,
         'Content-type' : 'application/json'
     }}
 
-    return await axios.post(url, datas, config)
+    let newUserInfos = {
+        "gender": genre,
+        "firstname": firstname,
+        "lastname": lastname,
+        "email": mail,
+        "password": password, 
+        "phone": phone,
+        "birthdate": birthdate,
+        "city": city,
+        "country": country,
+        "photo": photo,
+        "service": service     
+    }
+
+    return await axios.post(url, newUserInfos, config)
     .then((response) =>{
         console.log(response)
         return response})

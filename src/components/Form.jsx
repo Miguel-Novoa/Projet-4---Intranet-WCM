@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { PutDatas } from "../services/PutDatas.service";
 import { AddDatas } from "../services/AddDatas.service";
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 
 
@@ -18,18 +18,25 @@ function Form(props) {
     let token = localStorage.getItem('token');
     let id = localStorage.getItem('id');
     let [userDatas, setUserDatas] = useState();
+    let navigate = useNavigate();
 
     const currentLocation = useLocation();
     console.log(currentLocation.pathname)
 
     const onSubmit = data => {
-        let urlPut = `http://localhost:7000/api/collaborateurs/${id}`;
+        let urlPut = `http://localhost:7000/api/collaborateurs/${props.userId}`;
         let urlAdd = `http://localhost:7000/api/collaborateurs/`
-        if(currentLocation.pathname === '/Profile'){
+        console.log(data.mail)
+        if(currentLocation.pathname === `/Profile/${props.userId}`){
             PutDatas(urlPut, token, data.gender, data.firstname, data.lastname, data.email, 'password', data.phone, 
-            data.birthdate, data.city, data.country, data.photo, data.service)
+            data.birthdate, data.city, data.country, data.photo, data.service).then(res =>{
+                navigate('/List')
+            })
         }else if(currentLocation.pathname === '/Add'){
-            AddDatas(urlAdd, token, data)
+            AddDatas(urlAdd, token, data.gender, data.firstname, data.lastname, data.email, 'password', data.phone, 
+            data.birthdate, data.city, data.country, data.photo, data.service).then(res =>{
+                navigate('/List')
+            })
         }
     };
 
@@ -49,7 +56,7 @@ function Form(props) {
                 <option value="Marketing">Marketing</option>
             </select>
 
-            <input placeholder="E-mail" id="mail" className="formInput" type="email" {...register('email')} label={props.mail} defaultValue={props.mail}  size="30" required />
+            <input placeholder="E-mail" id="mail" className="formInput" {...register('email')} label={props.mail} defaultValue={props.mail} />
             <input type="password" name="password" id='password' {...register('password')}/>
             <input type="password" name="confirmPassword" id='confirmPassword' {...register('confirmPassword',{
                 validate : value => value === getValues('password')

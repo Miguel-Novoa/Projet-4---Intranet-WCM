@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function PutDatas(url, token, id, genre, firstname, lastname, mail, password, phone, birthdate, city,
+export async function PutDatas(url, token, genre, firstname, lastname, mail, password, phone, birthdate, city,
     country, photo, service) {
 
     let config = {headers: {

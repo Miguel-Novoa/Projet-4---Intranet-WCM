@@ -44,7 +44,7 @@ function Navbar() {
             <h3>Ajouter un collaborateur</h3>
           </Link>
         }
-        <Link className="navLink" to={'/Profile'}>
+        <Link className="navLink" to={`/Profile/${id}`}>
           <img className='userPic' src={currentUserDatas?.photo} alt="user profile picture" />
         </Link>
         <h3 className="decoBtn" onClick={deco}>Se déconnecter</h3>
