@@ -36,7 +36,7 @@ function Navbar() {
     <nav>
       <Link className="navLink navLogo" to='/Home'>
         <img className="intranetLogo" src={Logo} alt="intranet logo" />
-        <h2>Intranet</h2>
+        <h2 className="titleNav">Intranet</h2>
       </Link>
       <div style={{display: token !== null ? 'flex' : 'none'}} className="links">
         <Link className="navLink" to={'/List'}>

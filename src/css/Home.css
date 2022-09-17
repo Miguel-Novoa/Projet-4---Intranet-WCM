@@ -24,3 +24,25 @@
     color: var(--secondary-color) !important;
     border: 2px solid var(--secondary-color) !important;
 }
+
+@media screen and (max-width: 650px) and (min-width: 500px){
+    .welcome{
+        margin-top: 20%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .welcome{
+        margin-top: 30%;
+    }
+
+    h1{
+        font-size: 2rem !important;
+    }
+
+    .displayRandomBtn{
+        width: 80%;
+        font-size: 0.7rem !important;
+        margin-top: 5% !important;
+    }
+}

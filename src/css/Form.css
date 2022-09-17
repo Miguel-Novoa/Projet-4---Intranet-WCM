@@ -48,3 +48,64 @@
     color: var(--secondary-color);
     border: 2px solid var(--secondary-color);
 }
+
+@media screen and (max-width: 1000px) and (min-width: 840px){
+    .Form{
+        width: 50%;
+        margin-left: 25%;
+    }
+}
+
+@media screen and (max-width: 840px) and (min-width: 580px){
+    .Form{
+        width: 70%;
+        margin-left: 15%;
+    }
+    
+    h2{
+        margin-top: 20%;
+    }
+
+    .row label{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 580px) and (min-width: 400px){
+    .Form{
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    h2{
+        margin-top: 30%;
+    }
+
+    .row{
+        flex-flow: column;
+    }
+
+    .row label{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .Form{
+        width: 70%;
+        margin-left: 15%;
+        margin-top: 40%;
+    }
+
+    .row{
+        flex-flow: column;
+    }
+
+    h2{
+        margin-top: 20%;
+    }
+
+    .row label{
+        width: 60%;
+    }
+}

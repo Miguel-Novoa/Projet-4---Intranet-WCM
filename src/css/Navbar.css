@@ -53,3 +53,17 @@ nav{
 .navIcon{
     cursor: pointer;
 }
+
+.titleNav{
+    display: block;
+}
+
+@media screen and (max-width: 500px){
+    .titleNav{
+        display: none;
+    }
+
+    .links{
+        column-gap: 1rem;
+    }
+}

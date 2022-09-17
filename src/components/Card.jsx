@@ -53,10 +53,10 @@ function Cards(props) {
           {props.service}
         </div>
         <CardContent className="cardContent">
-          <Typography className='typography name' component="div" variant="h5">
+          <Typography className='name' component="div" variant="h5">
             {props.name}
           </Typography>
-          <Typography className='typography age' variant="subtitle1" color="text.secondary">({props.age + ' ans'})</Typography>
+          <Typography className='age' variant="subtitle1" color="text.secondary">({props.age + ' ans'})</Typography>
           <Typography className='typography' >
             <LocationOnIcon fontSize='small'/>
             {props.location}</Typography>

@@ -33,6 +33,7 @@
     flex-flow: row;
     justify-content: flex-start;
     column-gap: 0.3rem;
+    width: 60%;
 }
 
 .name{
@@ -56,3 +57,54 @@
     color: var(--secondary-color);
     border: 1px solid var(--secondary-color);
 }
+
+@media screen and (max-width: 1250px) and (min-width: 650px){
+    .Card{
+        flex-flow: column;
+        width: 45%;
+    }
+
+    .typography{
+        column-gap: 0.1rem;
+    }
+}
+
+@media screen and (max-width: 650px) and (min-width: 540px){
+    .Card{
+        flex-flow: column;
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 540px) and (min-width: 440px){
+    .Card{
+        flex-flow: column;
+        width: 65%;
+    }
+
+    .typography{
+        font-size: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 440px) and (min-width: 380px){
+    .Card{
+        flex-flow: column;
+        width: 75%;
+    }
+
+    .typography{
+        font-size: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 380px){
+    .Card{
+        flex-flow: column;
+        width: 85%;
+    }
+
+    .typography{
+        font-size: 0.5rem;
+    }
+}   

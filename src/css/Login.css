@@ -12,13 +12,34 @@
     align-items: center;
     background-color: var(--main-color);
     justify-self: center;
+    width: 30%;
 }
 
 .mailIpt{
-    width: 40ch;
+    width: 100%;
+}
+
+.pwIpt{
+    width: 100%;
 }
 
 .loginBtn{
     background-color: var(--secondary-color) !important;
     color: var(--main-color) !important;
+}
+
+.loginBtn:hover{
+    background-color: var(--main-color) !important;
+    color: var(--secondary-color) !important;
+    border: 1px solid var(--secondary-color);
+}
+
+@media screen and (max-width: 450px){
+    .mailIpt{
+        width: 80%;
+    }
+
+    .pwIpt{
+        width: 80%;
+    }
 }

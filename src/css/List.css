@@ -10,7 +10,7 @@
     padding-right: 15%;
     position: fixed;
     background-color: var(--main-color);
-    top: 10%;
+    top: 80px;
     padding-top: 1%;
     padding-bottom: 1%;
 }
@@ -52,6 +52,57 @@
     width: 100%;
     column-gap: 5%;
     row-gap: 2rem;
-    margin-top: 25%;
+    margin-top: 35%;
     margin-bottom: 5%;
+}
+
+@media screen and (max-width: 1050px) and (min-width: 640px){
+    #search{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 940px) and (min-width: 650px){
+    .peopleList{
+        margin-top: 50%;
+    }
+}
+
+@media screen and (max-width: 650px) and (min-width: 480px){
+    .peopleList{
+        margin-top: 70%;
+    }
+}
+
+@media screen and (max-width: 480px) and (min-width: 360px){
+    .peopleList{
+        margin-top: 100%;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .peopleList{
+        margin-top: 120%;
+    }
+}
+
+
+@media screen and (max-width: 640px) and (min-width: 430px){
+    #search{
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 430px){
+    #search{
+        width: 75%;
+    }
+
+    .selectDiv{
+        flex-flow: column;
+    }
+
+    h2{
+        font-size: 1rem !important;
+    }
 }

@@ -75,7 +75,7 @@ function Connexion() {
         <div className="Connexion">
             <div className="loginForm">
                 <TextField onChange={handleMailValueChange} type='email' id="outlined-basic mailIpt" className="mailIpt" label="Email" variant="outlined" />
-                <FormControl onChange={handlePasswordValueChange} sx={{ m: 1, width: '40ch' }} variant="outlined">
+                <FormControl className="pwIpt"  onChange={handlePasswordValueChange} sx={{ m: 1 }} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-password passwordIpt"
