@@ -1,5 +1,6 @@
 .Home{
-    min-height: 100vh !important;
+    min-height: 80vh !important;
+    height: 60vh!important;
 }
 
 .welcome{
@@ -7,7 +8,7 @@
     flex-flow: column;
     align-items: center;
     width: 100%;
-    margin-top: 5%;
+    margin-top: 10%;
     min-height: 80vh !important;
 }
 

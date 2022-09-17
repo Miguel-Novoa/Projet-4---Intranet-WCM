@@ -17,6 +17,7 @@ function Form(props) {
     const { register, getValues, handleSubmit, watch, formState: { errors } } = useForm();
     let token = localStorage.getItem('token');
     let id = localStorage.getItem('id');
+    let admin = JSON.parse(localStorage.getItem('admin'));
     let [userDatas, setUserDatas] = useState();
     let navigate = useNavigate();
 
@@ -40,40 +41,90 @@ function Form(props) {
         }
     };
 
+    const displayPageTitle = () =>{
+        if(currentLocation.pathname === `/Profile/${props.userId}` && props.userId !==id){
+            return `Modifier le profil de ${props.firstname}`
+        }else if(currentLocation.pathname === `/Profile/${props.userId}` && props.userId === id){
+            return 'Modifier votre profil'
+        }else if(currentLocation.pathname === '/Add'){
+            return 'Ajouter un collaborateur'
+        }
+    }
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="Form" method="post">
-            <input placeholder="Nom" className='formInput' id="nom" defaultValue={props.lastname} {...register('lastname')} />
-            <input placeholder="Prénom" className='formInput' id="prenom" defaultValue={props.firstname} {...register('firstname')} />
-
-            <select defaultValue={props.gender} {...register('gender')} name="gender" id="civilite" className="formInput">
-                <option value="male">Homme</option>
-                <option value="female">Femme</option>
-            </select>
-
-            <select defaultValue={props.service} {...register('service')} name="service" id="service" className="formInput">
-                <option value="Client">Client</option>
-                <option value="Technique">Technique</option>
-                <option value="Marketing">Marketing</option>
-            </select>
-
-            <input placeholder="E-mail" id="mail" className="formInput" {...register('email')} label={props.mail} defaultValue={props.mail} />
-            <input type="password" name="password" id='password' {...register('password')}/>
-            <input type="password" name="confirmPassword" id='confirmPassword' {...register('confirmPassword',{
-                validate : value => value === getValues('password')
-            })}/>
-            <input placeholder="Téléphone" type='tel' className='formInput' id="phone" defaultValue={props.phone} {...register('phone')} />
-            <input type="date" className='formInput' id='date' defaultValue={props.date} {...register('birthdate')} />
-            <input placeholder="Ville" className='formInput' id="city" defaultValue={props.city} {...register('city')} />
-            <input placeholder="Pays" className='formInput' id="country" defaultValue={props.country} {...register('country')} />
-            <input placeholder="Url de la photo" type="url" name="photo" id="photo" className="formInput" defaultValue={props.photo} {...register('photo')}/>
-            <button type="submit">Enregistrer</button>
+            <h2>{displayPageTitle()}</h2>
+            <div className="row">
+                <label htmlFor="nom">Nom : </label>
+                <input placeholder="Nom" className='formInput' id="nom" defaultValue={props.lastname} 
+                {...register('lastname')} />
+            </div>
+            <div className="row">
+                <label htmlFor="prenom">Prénom : </label>
+                <input placeholder="Prénom" className='formInput' id="prenom" defaultValue={props.firstname} 
+                {...register('firstname')} />
+            </div>
+            <div className="row">
+                <label htmlFor="civilite">Civilité : </label>
+                <select defaultValue={props.gender} {...register('gender')} name="gender" id="civilite" className="formInput">
+                    <option value="male">Homme</option>
+                    <option value="female">Femme</option>
+                </select>
+            </div>
+            <div className="row">
+                <label htmlFor="service">Service : </label>
+                <select defaultValue={props.service} {...register('service')} name="service" id="service" 
+                className="formInput">
+                    <option value="Client">Client</option>
+                    <option value="Technique">Technique</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+            <div className="row">
+                <label htmlFor="mail">E-mail : </label>
+                <input placeholder="E-mail" id="mail" className="formInput" {...register('email')} 
+                label={props.mail} defaultValue={props.mail} />
+            </div>
+            <div className="row">
+                <label htmlFor="password">Mot de passe : </label>
+                <input placeholder='Mot de passe' className="formInput" type="password" name="password" 
+                id='password' {...register('password')}/>
+            </div>
+            <div className="row">
+                <label htmlFor="confirmPassword"> Confirmez votre mot de passe :</label>
+                <input placeholder='Mot de passe' className="formInput" type="password" name="confirmPassword" 
+                id='confirmPassword' {...register('confirmPassword',{
+                    validate : value => value === getValues('password')
+                })}/>
+            </div>
+            <div className="row">
+                <label htmlFor="phone">Téléphone : </label>
+                <input placeholder="Téléphone" type='tel' className='formInput' id="phone" defaultValue={props.phone} 
+                {...register('phone')} />
+            </div>
+            <div className="row">
+                <label htmlFor="date">Date de naissance : </label>
+                <input type="date" className='formInput' id='date' defaultValue={props.date} 
+            {...register('birthdate')} />
+            </div>
+            <div className="row">
+                <label htmlFor="city">Ville : </label>
+                <input placeholder="Ville" className='formInput' id="city" defaultValue={props.city} 
+                {...register('city')} />
+            </div>
+            <div className="row">
+                <label htmlFor="country">Pays : </label>
+                <input placeholder="Pays" className='formInput' id="country" defaultValue={props.country} 
+                {...register('country')} />
+            </div>
+            <div className="row">
+                <label htmlFor="photo">Url de la photo : </label>
+                <input placeholder="Url de la photo" type="url" name="photo" id="photo" 
+                className="formInput" defaultValue={props.photo} {...register('photo')}/>
+            </div>
+            <button className="save" type="submit">Enregistrer</button>
         </form>
     )
 }
-
-/*<input type="password" name="password" id='password' {...register('password')}/>
-            <input type="password" name="confirmPassword" id='confirmPassword' {...register({
-                validate : value => value === getValues('password')
-            })}/>*/
 
 export default Form;
