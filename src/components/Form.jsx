@@ -13,7 +13,7 @@ import '../css/Form.css'
 
 
 function Form(props) {
-    const { register, getValues, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, getValues, handleSubmit, formState: { errors } } = useForm();
     let token = localStorage.getItem('token');
     let id = localStorage.getItem('id');
     let navigate = useNavigate();
@@ -24,12 +24,12 @@ function Form(props) {
         let urlPut = `http://localhost:7000/api/collaborateurs/${props.userId}`;
         let urlAdd = `http://localhost:7000/api/collaborateurs/`
         if(currentLocation.pathname === `/Profile/${props.userId}`){
-            PutDatas(urlPut, token, data.gender, data.firstname, data.lastname, data.email, 'password', data.phone, 
+            PutDatas(urlPut, token, data.gender, data.firstname, data.lastname, data.email, data.password, data.phone, 
             data.birthdate, data.city, data.country, data.photo, data.service).then(res =>{
                 navigate('/List')
             })
         }else if(currentLocation.pathname === '/Add'){
-            AddDatas(urlAdd, token, data.gender, data.firstname, data.lastname, data.email, 'password', data.phone, 
+            AddDatas(urlAdd, token, data.gender, data.firstname, data.lastname, data.email, data.password, data.phone, 
             data.birthdate, data.city, data.country, data.photo, data.service).then(res =>{
                 navigate('/List')
             })

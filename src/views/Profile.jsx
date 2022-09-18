@@ -14,7 +14,7 @@ function Profile() {
     let token = localStorage.getItem('token');
     let [currentUserDatas, setCurrentUserDatas] = useState();
     let params = useParams();
-    let userId = params.id;
+    let userId = JSON.parse(params.id);
 
     useEffect(() => {
         let currentUserUrl = `http://localhost:7000/api/collaborateurs/${userId}`;

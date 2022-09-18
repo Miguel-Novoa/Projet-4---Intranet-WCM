@@ -16,7 +16,7 @@ function Navbar() {
   let [currentUserDatas, setCurrentUserDatas] = useState()
   let token = localStorage.getItem('token');
   let id = localStorage.getItem('id');
-  let admin = JSON.parse(localStorage.getItem('admin'));
+  let admin = localStorage.getItem('admin');
 
   const deco = () =>{
     removeTokenLocalStorage();
@@ -43,7 +43,7 @@ function Navbar() {
           <ListIcon fontSize='large' className="navIcon"/>
         </Link>
         {admin &&
-          <Link id="add" style={{display : admin ? 'block' : 'none'}} className="navLink" to={'/Add'}>
+          <Link id="add" style={{display : admin === 'true' ? 'block' : 'none'}} className="navLink" to={'/Add'}>
             <GroupAddIcon fontSize='large' className="navIcon"/>
           </Link>
         }

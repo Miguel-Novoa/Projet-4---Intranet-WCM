@@ -20,7 +20,7 @@ import { getDatas } from "../services/GetDatas.service";
 import { displayServiceColor } from "../js/displayServiceColor";
 
 function Cards(props) {
-  let admin = JSON.parse(localStorage.getItem('admin'));
+  let admin = localStorage.getItem('admin');
   let token = localStorage.getItem('token');
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -74,10 +74,10 @@ function Cards(props) {
           </Typography>
           <div className='adminBtns'>
             <Link to={`/Profile/${props.id}`}>
-              <button className="adminBtn" style={{display : admin ? 'block' : 'none'}}>Editer</button>
+              <button className="adminBtn" style={{display : admin === 'true' ? 'block' : 'none'}}>Editer</button>
             </Link>
             <button className="adminBtn" aria-describedby={props.id} type="button" onClick={handleClick}
-            style={{display : admin ? 'block' : 'none'}}>Supprimer</button>
+            style={{display : admin  === 'true' ? 'block' : 'none'}}>Supprimer</button>
             <Popper id={props.id} open={open} anchorEl={anchorEl}>
               <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
                 Êtes-vous sûr de vouloir supprimer ce collaborateur ?
