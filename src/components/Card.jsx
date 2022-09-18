@@ -87,11 +87,13 @@ function Cards(props) {
             </Link>
             <button className="adminBtn" aria-describedby={props.id} type="button" onClick={handleClick}
             style={{display : admin  === 'true' ? 'block' : 'none'}}>Supprimer</button>
-            <Popper id={props.id} open={open} anchorEl={anchorEl}>
+            <Popper className="popper" id={props.id} open={open} anchorEl={anchorEl}>
               <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-                Êtes-vous sûr de vouloir supprimer ce collaborateur ?
-                <button onClick={()=>{deleteUser(props.id), setAnchorEl(null)}}>Oui</button>
-                <button onClick={()=>{setAnchorEl(null)}}>non</button>
+                <p>Êtes-vous sûr de vouloir supprimer ce collaborateur ?</p>
+                <div className="popperBtns">
+                  <button className="popperBtn" onClick={()=>{deleteUser(props.id), setAnchorEl(null)}}>Oui</button>
+                  <button className="popperBtn" onClick={()=>{setAnchorEl(null)}}>non</button>
+                </div>
               </Box>
             </Popper>
           </div>

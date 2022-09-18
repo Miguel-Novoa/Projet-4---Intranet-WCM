@@ -58,6 +58,39 @@
     border: 1px solid var(--secondary-color);
 }
 
+.popper{
+    width: 25%;
+    height: auto;
+    background-color: white;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.popper box{
+    display: flex;
+    flex-flow: column;
+}
+
+.popperBtns{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    column-gap: 2rem;
+    justify-content: center;
+}
+
+.popperBtn{
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+    border-radius: 5px;
+}
+
+.popperBtn:hover{
+    background-color: white;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
 @media screen and (max-width: 1250px) and (min-width: 650px){
     .Card{
         flex-flow: column;
