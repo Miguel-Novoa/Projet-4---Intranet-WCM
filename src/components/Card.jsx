@@ -18,10 +18,12 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { Delete } from "../services/Delete.service";
 import { getDatas } from "../services/GetDatas.service";
 import { displayServiceColor } from "../js/displayServiceColor";
+import { useLocation } from "react-router-dom";
 
 function Cards(props) {
   let admin = localStorage.getItem('admin');
   let token = localStorage.getItem('token');
+  let currentLocation = useLocation();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -34,9 +36,16 @@ function Cards(props) {
   const deleteUser = (id) =>{
     let url = `http://localhost:7000/api/collaborateurs/${id}`
     Delete(url, token).then(res =>{
-      getDatas('http://localhost:7000/api/collaborateurs ', token).then(response =>{
-        props.setUsersState(response.data)
-      })
+      if(currentLocation.pathname === '/List'){
+        getDatas('http://localhost:7000/api/collaborateurs ', token).then(response =>{
+          props.setUsersState(response.data)
+        })
+      }else if(currentLocation.pathname === '/Home'){
+        getDatas('http://localhost:7000/api/collaborateurs/random ', token).then(response =>{
+          props.setUsersState(response.data)
+        })
+      }
+      
     })
   }
 

@@ -59,6 +59,7 @@ function Home() {
                      age={calculateAge(randomDatas.birthdate)}
                      service={randomDatas.service}
                      id={randomDatas.id}
+                     setUsersState={setRandomDatas}
               />
               <Button className='displayRandomBtn' onClick={displayNewRandom} variant="contained">Dire bonjour à quelqu'un d'autre</Button>
           </div>
