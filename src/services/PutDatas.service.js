@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-export async function PutDatas(url, token, genre, firstname, lastname, mail, password, phone, birthdate, city,
-    country, photo, service) {
+export async function PutDatas(url, token, datas) {
 
     let config = {headers: {
         'Authorization': `Bearer ${token}`,
@@ -9,17 +8,17 @@ export async function PutDatas(url, token, genre, firstname, lastname, mail, pas
     }}
 
     let newUserInfos = {
-        "gender": genre,
-        "firstname": firstname,
-        "lastname": lastname,
-        "email": mail,
-        "password": password, 
-        "phone": phone,
-        "birthdate": birthdate,
-        "city": city,
-        "country": country,
-        "photo": photo,
-        "service": service     
+        "gender": datas.gender,
+        "firstname": datas.firstname,
+        "lastname": datas.lastname,
+        "email": datas.email,
+        "password": datas.password, 
+        "phone": datas.phone,
+        "birthdate": datas.birthdate,
+        "city": datas.city,
+        "country": datas.country,
+        "photo": datas.photo,
+        "service": datas.service     
     }
 
     return await axios.put(url, newUserInfos, config)
