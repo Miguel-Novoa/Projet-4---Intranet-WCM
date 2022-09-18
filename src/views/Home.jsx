@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Cards from "../components/Card"
+import CheckToken from "../components/CheckToken";
 import Button from '@mui/material/Button';
 import '../App.css';
 import '../css/Navbar.css'
@@ -17,7 +18,6 @@ function Home() {
   let [randomDatas, setRandomDatas] = useState();
   let [currentUserDatas, setCurrentUserDatas] = useState()
   let token = localStorage.getItem('token');
-  let navigate = useNavigate();
 
   useEffect(()=>{
     let currentUserUrl = `http://localhost:7000/api/collaborateurs/${id}` ;
@@ -31,13 +31,6 @@ function Home() {
     )
   }, [])
 
-  useEffect(()=>{
-    if(token === null){
-      navigate('/')
-    }
-      
-  }, [])
-
   const displayNewRandom = () =>{
       getDatas(randomUrl, token).then(res => {
         setRandomDatas(res.data)
@@ -46,6 +39,7 @@ function Home() {
 
   return (
     <div className="Home">
+        <CheckToken />
         <Navbar/>
         {randomDatas &&
         currentUserDatas &&

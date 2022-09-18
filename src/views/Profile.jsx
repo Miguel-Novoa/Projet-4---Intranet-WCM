@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getDatas } from '../services/GetDatas.service';
 
 import '../App.css';
@@ -8,9 +8,9 @@ import '../css/Navbar.css';
 import '../css/Form.css';
 import Navbar from '../components/Navbar';
 import Form from '../components/Form';
+import CheckToken from '../components/CheckToken';
 
 function Profile() {
-    let navigate = useNavigate();
     let token = localStorage.getItem('token');
     let [currentUserDatas, setCurrentUserDatas] = useState();
     let params = useParams();
@@ -24,14 +24,9 @@ function Profile() {
         });
     }, []);
 
-    useEffect(() => {
-        if (token === null) {
-            navigate('/');
-        }
-    }, []);
-
     return (
         <div className="Profile">
+            <CheckToken />
             <Navbar />
             {currentUserDatas && (
                 <Form

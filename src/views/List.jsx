@@ -6,6 +6,7 @@ import '../css/Navbar.css';
 import '../css/List.css';
 import Navbar from '../components/Navbar';
 import Cards from '../components/Card';
+import CheckToken from '../components/CheckToken';
 import { getDatas } from '../services/GetDatas.service';
 import { useState, useEffect } from 'react';
 import { displayBirthdate } from '../js/displayBirthdate';
@@ -86,6 +87,7 @@ function List() {
 
     return (
         <div className="List">
+            <CheckToken />
             <Navbar />
             <form onChange={handleSubmit(searchFilter)} className="filter">
                 <h2>Liste des collaborateurs :</h2>
